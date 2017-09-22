@@ -8,8 +8,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using API.TwitchBot.Models.Context;
+using Swashbuckle.AspNetCore.Swagger;
 
-namespace TwitchBot
+namespace API.TwitchBot
 {
     public class Startup
     {
@@ -23,16 +26,28 @@ namespace TwitchBot
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AnswerContext>(opt => opt.UseInMemoryDatabase("Answers"));
+            services.AddDbContext<PollContext>(opt => opt.UseInMemoryDatabase("Polls"));
+            services.AddDbContext<VoteContext>(opt => opt.UseInMemoryDatabase("Votes"));
             services.AddMvc();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "TwitchBot API", Description = "API to manage polls of TwitchBOT", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
             {
-                app.UseDeveloperExceptionPage();
-            }
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TwitchBot API V1");
+            });
 
             app.UseMvc();
         }
