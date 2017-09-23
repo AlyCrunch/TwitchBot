@@ -50,6 +50,9 @@ namespace API.TwitchBot
             });
 
             app.UseMvc();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
         }
     }
 }
