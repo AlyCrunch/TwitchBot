@@ -10,7 +10,7 @@ using API.TwitchBot.Models.Context;
 
 namespace API.TwitchBot.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class VotesController : Controller
     {
         private readonly VoteContext _context;

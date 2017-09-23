@@ -10,7 +10,7 @@ using API.TwitchBot.Models.Context;
 
 namespace API.TwitchBot.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class AnswersController : Controller
     {
         private readonly AnswerContext _context;

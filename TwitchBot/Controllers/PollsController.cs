@@ -7,7 +7,7 @@ using API.TwitchBot.Models.Context;
 
 namespace API.TwitchBot.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class PollsController : Controller
     {
         private readonly PollContext _context;
