@@ -7,8 +7,7 @@
     "name": "aliso"
   },
   "scripts": {
-    "start": "webpack-dev-server",
-    "prepare": "webpack"
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "@types/jest": "^21.1.1",
@@ -26,5 +25,9 @@
     "typescript": "^2.5.3",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.0"
+  },
+  "devDependencies": {
+    "dts-gen": "^0.5.6",
+    "dts-generator": "^2.1.0"
   }
 }

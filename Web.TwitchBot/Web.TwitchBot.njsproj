@@ -42,20 +42,16 @@
     </Content>
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tslint.json" />
     <TypeScriptCompile Include="src\index.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="dist\" />
     <Folder Include="src\" />
-    <Folder Include="Scripts\" />
-    <Folder Include="Scripts\typings\" />
-    <Folder Include="Scripts\typings\node\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dist\bundle.js" />
     <Compile Include="webpack.config.js">
       <SubType>Code</SubType>
     </Compile>
